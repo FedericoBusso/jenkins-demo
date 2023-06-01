@@ -4,10 +4,17 @@ pipeline {
     stages {
         stage('Build') {         
             steps {
+                sayName 'Mark'
                 echo 'Building..'
             }
         }
         stage('Test') {
+            when{
+                allOf{
+                    branch 'main'
+                    changeset "api/*"
+                }
+            }
             steps {
                 echo 'Testing..'
             }
