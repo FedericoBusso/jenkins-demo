@@ -6,6 +6,7 @@ pipeline {
     stages {
         stage('Build') {         
             steps {
+                requestApproval(environment: 'DEV', time: 1, unit: 'DAYS')
                 sayHello 'Mark'
                 echo 'Building..'
             }
